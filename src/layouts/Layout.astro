@@ -1,0 +1,53 @@
+---
+import { SEO } from "astro-seo";
+
+export interface Props {
+	titulo: string;
+	descripcion: string;
+	imagen: string;
+}
+
+
+const { titulo, descripcion,url = Astro.url, imagen } = Astro.props;
+
+
+---
+
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="" />
+		<SEO
+      title={titulo}
+      description={descripcion}
+      openGraph={{
+        basic: {
+          title: titulo,
+          type: "website",
+          image: imagen,
+          url: url,
+		  },
+      }}
+	twitter={{
+	card: "summary_large_image",
+	title: titulo,
+	description:descripcion,
+	image: imagen,
+  }}
+      />
+
+	  
+	
+	</head>
+	<body class="bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100">
+		
+		<slot />
+	
+		
+	</body>
+</html>
+
+
+
